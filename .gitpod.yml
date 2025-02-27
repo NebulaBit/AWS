@@ -7,10 +7,12 @@ tasks:
       cd /workspace
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip -o awscliv2.zip
-      ./aws/install --install-dir /workspace/aws-cli --bin-dir /workspace/bin
-      echo 'export PATH="/workspace/bin:$PATH"' >> ~/.bashrc
-      echo 'export PATH="/workspace/bin:$PATH"' >> ~/.zshrc
+      ./aws/install --install-dir /workspace/aws-cli --bin-dir /workspace/aws-cli/v2/current/bin
+      echo 'export PATH="/workspace/aws-cli/v2/current/bin:$PATH"' >> ~/.bashrc
+      echo 'export PATH="/workspace/aws-cli/v2/current/bin:$PATH"' >> ~/.zshrc
       source ~/.bashrc
       source ~/.zshrc
+
+
 
 
