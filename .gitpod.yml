@@ -1,17 +1,24 @@
-# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
-  - name: aws-cli
-    env:
-      AWS_CLI_AUTO_PROMPT: on-partial
-    before: |
+  - name: Install AWS CLI
+    init: |
+      # Set working directory
       cd /workspace
+
+      # Download AWS CLI
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip -o awscliv2.zip
+
+      # Install AWS CLI in workspace directory
       ./aws/install --install-dir /workspace/aws-cli --bin-dir /workspace/aws-cli/v2/current/bin
+
+      # Ensure AWS CLI is in PATH
       echo 'export PATH="/workspace/aws-cli/v2/current/bin:$PATH"' >> ~/.bashrc
       echo 'export PATH="/workspace/aws-cli/v2/current/bin:$PATH"' >> ~/.zshrc
       source ~/.bashrc
       source ~/.zshrc
+
+      # Verify installation
+      aws --version
 
 
 
